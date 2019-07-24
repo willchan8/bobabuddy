@@ -41,6 +41,7 @@ class RestaurantList extends React.Component {
           restaurantsPerPage={restaurantsPerPage} 
           totalRestaurants={restaurants.length} 
           paginate={this.paginate}
+          currentPage={currentPage}
         />
       </div>
     )

@@ -20,6 +20,7 @@ class App extends React.Component {
     this.getRestaurants = this.getRestaurants.bind(this);
     this.updateVisited = this.updateVisited.bind(this);
     this.clickVisited = this.clickVisited.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -73,10 +74,17 @@ class App extends React.Component {
 
     this.setState({restaurants: restaurantsCopy});
 
-    axios.post('/restaurants/user', restaurant)
-    .then(this.updateVisited)
-    .catch((error) => {
-      console.log(error);
+    // axios.post('/restaurants/user', restaurant)
+    // .then(this.updateVisited)
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+  }
+
+  handleSearch(text) {
+    let searchedRestaurant = this.state.restaurants.filter(restaurant => (restaurant.name.includes(text)));
+    this.setState({
+      restaurants: searchedRestaurant,
     });
   }
 
@@ -97,6 +105,7 @@ class App extends React.Component {
               restaurants={restaurants} 
               visited={visited} 
               clickVisited={this.clickVisited}
+              handleSearch={this.handleSearch}
             />
           </div>
           <div className="column">

@@ -163,3 +163,7 @@ button:focus {
 .page-item:hover {
   cursor: pointer;
 }
+
+.current { 
+  background-color: #f3f3f3;
+}
